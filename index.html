@@ -72,6 +72,92 @@
             </table>
         </section>
     </main>
+        <!-- Modal contacto-->
+    <div
+      class="modal fade"
+      id="modalDocente"
+      tabindex="-1"
+      aria-labelledby="modalDocenteLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalDocenteLabel">
+              Administrar Docentes
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="apellido"
+                    minlength="2"
+                    maxlength="50"
+                    placeholder="Ej: Perez"
+                    />
+              </div>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  aria-describedby="Ingresar nombre"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: Juan"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="cuil" class="form-label">CUIL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cuil"
+                  aria-describedby="Ingresar numero de CUIL"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 20-23345678-1"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaNac"
+                  aria-describedby="Ingresar la Fecha de Nacimiento"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 01-01-1990"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telefono"
+                  placeholder="Ej: +54381222333"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+    </div>
     <footer class="bg-dark text-light text-center py-3">
       <p>&copy; Todos los derechos reservados</p>
     </footer>
