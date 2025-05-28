@@ -1,0 +1,2 @@
+import Docente from "./classDocente";
+
