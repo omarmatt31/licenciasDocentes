@@ -3,6 +3,7 @@ import Docente from "./classDocente.js"
 const abrirModal = ()=>{
     const modalDocente = new bootstrap.Modal(document.getElementById('modalDocente'))
     modalDocente.show()
+    creandoDocente = true
 }
 
 const crearDocente = ()=>{
@@ -42,7 +43,7 @@ const dibujarFila = (docente, indice)=> {
                         <td>${docente.fechaDeNacimiento}</td>
                         <td>${docente.telefono}</td>
                         <td>
-                        <button class="btn btn-warning">Editar</button>
+                        <button class="btn btn-warning" onclick="prepararDocente('${docente.id}')">Editar</button>
                         <button class="btn btn-danger" onclick="eliminarDocente('${docente.id}')">Dar de Baja</button>
                         <button class="btn btn-info">Ver Licencias</button>
                         </td>
@@ -50,8 +51,6 @@ const dibujarFila = (docente, indice)=> {
 }
 
 window.eliminarDocente = (id)=>{
-    console.log("Aqui debe eliminarse un docente", id)
-
     const posicionDocenteBuscado = listadoDocente.findIndex((docente)=> docente.id === id)
     listadoDocente.splice(posicionDocenteBuscado, 1)
     guardarLocalStorage()
@@ -59,7 +58,22 @@ window.eliminarDocente = (id)=>{
 
 }
 
+window.prepararDocente = (id)=> {
+   // console.log("Aqui debe preparar un docente", id)
+   const docenteBuscado = listadoDocente.find((docente)=> docente.id === id)
+   inputApellido.value = docenteBuscado.apellido
+   inputNombre.value = docenteBuscado.nombre
+   inputCuil.value = docenteBuscado.cuil
+   inputFechaNac.value = docenteBuscado.fechaDeNacimiento
+   inputTelefono.value = docenteBuscado.telefono
+   abrirModal()
+   idDocenteEditar = id
+   creandoDocente = false
+}
 
+const editarDocente = () =>{
+    
+}
 
 const btnAgregar = document.getElementById('btnAgregar')
 const formularioDocentes = document.querySelector('form')
@@ -70,12 +84,19 @@ const inputFechaNac = document.querySelector('#fechaNac')
 const inputTelefono = document.querySelector('#telefono')
 const listadoDocente = JSON.parse(localStorage.getItem('listadoDocenteKey')) || []
 const tablaDocente = document.querySelector('tbody')
+let creandoDocente = true
+let idDocenteEditar = null
 
 
 btnAgregar.addEventListener('click', abrirModal)
 formularioDocentes.addEventListener('submit', (e)=>{
     e.preventDefault()
-    crearDocente()
+    if(crearDocente){
+        crearDocente()
+    }else{
+        editarDocente()
+    }
+
 })
 
 cargarDatosTabla()
