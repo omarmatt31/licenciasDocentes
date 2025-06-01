@@ -43,11 +43,23 @@ const dibujarFila = (docente, indice)=> {
                         <td>${docente.telefono}</td>
                         <td>
                         <button class="btn btn-warning">Editar</button>
-                        <button class="btn btn-danger" onclick="eliminarContacto()">Dar de Baja</button>
+                        <button class="btn btn-danger" onclick="eliminarDocente('${docente.id}')">Dar de Baja</button>
                         <button class="btn btn-info">Ver Licencias</button>
                         </td>
                     </tr>`
 }
+
+window.eliminarDocente = (id)=>{
+    console.log("Aqui debe eliminarse un docente", id)
+
+    const posicionDocenteBuscado = listadoDocente.findIndex((docente)=> docente.id === id)
+    listadoDocente.splice(posicionDocenteBuscado, 1)
+    guardarLocalStorage()
+    tablaDocente.children[posicionDocenteBuscado].remove()
+
+}
+
+
 
 const btnAgregar = document.getElementById('btnAgregar')
 const formularioDocentes = document.querySelector('form')
