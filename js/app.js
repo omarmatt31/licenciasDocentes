@@ -26,6 +26,10 @@ const guardarLocalStorage = () =>{
 
 const limpiarFormulario = () =>{
     formularioDocentes.reset()
+    const inputs = formularioDocentes.querySelector('.form-control')
+    inputs.forEach(input => {
+        input.classList.remove('is-valid', 'is-invalid');
+    });
 }
 
 const cargarDatosTabla = () => {
@@ -72,7 +76,14 @@ window.prepararDocente = (id)=> {
 }
 
 const editarDocente = () =>{
-    
+    const posicionDocente = listadoDocente.findIndex((docente)=> docente.id === idDocenteEditar)
+    listadoDocente[posicionDocente].apellido = inputApellido.value
+    listadoDocente[posicionDocente].nombre = inputNombre.value
+    listadoDocente[posicionDocente].cuil = inputCuil.value
+    listadoDocente[posicionDocente].fechaDeNacimiento = inputFechaNac.value
+    listadoDocente[posicionDocente].telefono = inputTelefono.value
+
+    guardarLocalStorage()
 }
 
 const btnAgregar = document.getElementById('btnAgregar')
