@@ -49,7 +49,7 @@ const dibujarFila = (docente, indice)=> {
                         <td>
                         <button class="btn btn-warning" onclick="prepararDocente('${docente.id}')">Editar</button>
                         <button class="btn btn-danger" onclick="eliminarDocente('${docente.id}')">Dar de Baja</button>
-                        <button class="btn btn-info">Ver Licencias</button>
+                        <button class="btn btn-info" onclick="verDocente('${docente.id}')">Ver Licencias</button>
                         </td>
                     </tr>`
 }
@@ -73,6 +73,10 @@ window.prepararDocente = (id)=> {
    abrirModal()
    idDocenteEditar = id
    creandoDocente = false
+}
+
+window.verDocente = (id) => {
+    window.location.href='./pages/detalleLicencias.html?cod='+id
 }
 
 const editarDocente = () =>{
