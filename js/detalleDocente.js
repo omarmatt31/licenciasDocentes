@@ -1,3 +1,5 @@
+import Licencia from "./classLicencia"
+
 const parametroURL = new URLSearchParams(window.location.search)
 const id = parametroURL.get('cod')
 console.log(id)
