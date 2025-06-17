@@ -74,10 +74,19 @@ const dibujarFila = (licencia, indice)=> {
                                 <td>${licencia.observaciones}</td>
                                 <td>
                                   <button class="btn btn-warning" onclick="prepararDocente('${licencia.id}')">Editar</button>
-                                  <button class="btn btn-danger" onclick="eliminarDocente('${licencia.id}')">Eliminar</button>
+                                  <button class="btn btn-danger" onclick="eliminarLicencia('${licencia.id}')">Eliminar</button>
                                 </td>
                               </tr>`
 }
+
+window.eliminarLicencia = (id)=>{
+    const posicionLicenciaBuscada = listadoLicencias.findIndex((licencia)=> licencia.id === id)
+    listadoLicencias.splice(posicionLicenciaBuscada, 1)
+    guardarLocalStorage()
+    tablaLicencia.children[posicionLicenciaBuscada].remove()
+}
+
+
 
 const btnAgregar = document.getElementById('btnAgregar')
 const formularioLicencias = document.querySelector('form')
