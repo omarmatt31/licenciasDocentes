@@ -86,11 +86,10 @@ const inputFechaInicio = document.querySelector('#fechaInicio')
 const inputFechaFin = document.querySelector('#fechaFin')
 const inputDias = document.querySelector('#dias')
 const inputObservaciones = document.querySelector('#observaciones')
-const listaLicencias = JSON.parse(localStorage.getItem('listadoLicenciasKey')) || []
 const tablaLicencia = document.querySelector('tbody')
 let creandoLicencia = true
 
-const listadoLicencias = JSON.parse(localStorage.getItem('listadoLicenciasKey')) || []
+const listadoLicencias = JSON.parse(localStorage.getItem('listadoLicenciasKey')).filter(licencia => licencia.idDocente === id) || []
 
 btnAgregar.addEventListener('click', abrirModal)
 formularioLicencias.addEventListener('submit', (e)=>{
