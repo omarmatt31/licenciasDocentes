@@ -75,8 +75,8 @@ const limpiarFormulario = () => {
   formularioLicencias.reset();
   //const inputs = formularioLicencias.querySelector('.form-control')
   //inputs.forEach(input => {
- // input.classList.remove('is-valid', 'is-invalid');
- // });
+  // input.classList.remove('is-valid', 'is-invalid');
+  // });
 };
 
 const cargarDatosTabla = () => {
@@ -154,29 +154,31 @@ window.verDocente = (id) => {
 };
 
 const editarLicencia = () => {
-  const posicionLicencia = listadoLicencias.findIndex(
-    (licencia) => licencia.id === idLicenciaEditar
-  );
-  listadoLicencias[posicionLicencia].articulo = inputArticulo.value;
-  listadoLicencias[posicionLicencia].fechaInicio = inputFechaInicio.value;
-  listadoLicencias[posicionLicencia].fechaFin = inputFechaFin.value;
-  listadoLicencias[posicionLicencia].dias = inputDias.value;
-  listadoLicencias[posicionLicencia].observaciones = inputObservaciones.value;
-  guardarLocalStorage();
-  limpiarFormulario();
+  if (validaciones()) {
+    const posicionLicencia = listadoLicencias.findIndex(
+      (licencia) => licencia.id === idLicenciaEditar
+    );
+    listadoLicencias[posicionLicencia].articulo = inputArticulo.value;
+    listadoLicencias[posicionLicencia].fechaInicio = inputFechaInicio.value;
+    listadoLicencias[posicionLicencia].fechaFin = inputFechaFin.value;
+    listadoLicencias[posicionLicencia].dias = inputDias.value;
+    listadoLicencias[posicionLicencia].observaciones = inputObservaciones.value;
+    guardarLocalStorage();
+    limpiarFormulario();
 
-  const modalLicencia = bootstrap.Modal.getInstance(
-    document.getElementById("modalLicencia")
-  );
-  modalLicencia.hide();
+    const modalLicencia = bootstrap.Modal.getInstance(
+      document.getElementById("modalLicencia")
+    );
+    modalLicencia.hide();
 
-  actualizarDatosTabla();
+    actualizarDatosTabla();
 
-  Swal.fire({
-    title: "Licencia modificada",
-    text: `La licencia fue modificada con exito`,
-    icon: "success",
-  });
+    Swal.fire({
+      title: "Licencia modificada",
+      text: `La licencia fue modificada con exito`,
+      icon: "success",
+    });
+  }
 };
 
 function validarFechaFin(fechaInicio, fechaFin) {
@@ -192,8 +194,8 @@ function validarFechaFin(fechaInicio, fechaFin) {
 }
 
 function validarFechaInicio(fechaInicio) {
-    const fechaActual = new Date()
-    console.log(fechaActual)
+  const fechaActual = new Date();
+  console.log(fechaActual);
   if (fechaInicio <= fechaActual) {
     inputFechaInicio.classList.add("is-valid");
     inputFechaInicio.classList.remove("is-invalid");
@@ -205,16 +207,20 @@ function validarFechaInicio(fechaInicio) {
   }
 }
 
-
 function validaciones() {
   let datosValidos = true;
-  if (!validarFechaFin(new Date(inputFechaInicio.value), new Date(inputFechaFin.value))) {
+  if (
+    !validarFechaFin(
+      new Date(inputFechaInicio.value),
+      new Date(inputFechaFin.value)
+    )
+  ) {
     datosValidos = false;
   }
 
-    if (!validarFechaInicio(new Date(inputFechaInicio.value))) {
+  if (!validarFechaInicio(new Date(inputFechaInicio.value))) {
     datosValidos = false;
-    }
+  }
   return datosValidos;
 }
 
