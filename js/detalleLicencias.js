@@ -34,29 +34,30 @@ const abrirModal = () => {
 };
 
 const crearLicencia = () => {
-  console.log("crear licencia");
-  const licenciaNueva = new Licencia(
-    id,
-    inputArticulo.value,
-    inputFechaInicio.value,
-    inputFechaFin.value,
-    inputDias.value,
-    inputObservaciones.value
-  );
-  //const docenteNuevo = new Docente(inputApellido.value, inputNombre.value, inputCuil.value, inputTelefono.value)
-  listadoLicencias.push(licenciaNueva);
-  guardarLocalStorage();
-  dibujarFila(licenciaNueva, listadoLicencias.length);
-  limpiarFormulario();
-  Swal.fire({
-    title: "Licencia creada",
-    text: `La licencia fue asignada con exito`,
-    icon: "success",
-  });
-  const modalLicencia = bootstrap.Modal.getInstance(
-    document.getElementById("modalLicencia")
-  );
-  modalLicencia.hide();
+  if (validaciones()) {
+    const licenciaNueva = new Licencia(
+      id,
+      inputArticulo.value,
+      inputFechaInicio.value,
+      inputFechaFin.value,
+      inputDias.value,
+      inputObservaciones.value
+    );
+    //const docenteNuevo = new Docente(inputApellido.value, inputNombre.value, inputCuil.value, inputTelefono.value)
+    listadoLicencias.push(licenciaNueva);
+    guardarLocalStorage();
+    dibujarFila(licenciaNueva, listadoLicencias.length);
+    limpiarFormulario();
+    Swal.fire({
+      title: "Licencia creada",
+      text: `La licencia fue asignada con exito`,
+      icon: "success",
+    });
+    const modalLicencia = bootstrap.Modal.getInstance(
+      document.getElementById("modalLicencia")
+    );
+    modalLicencia.hide();
+  }
 };
 
 const formatearFecha = (fechaOriginal) => {
@@ -74,8 +75,8 @@ const limpiarFormulario = () => {
   formularioLicencias.reset();
   //const inputs = formularioLicencias.querySelector('.form-control')
   //inputs.forEach(input => {
-  //input.classList.remove('is-valid', 'is-invalid');
-  //});
+ // input.classList.remove('is-valid', 'is-invalid');
+ // });
 };
 
 const cargarDatosTabla = () => {
@@ -177,6 +178,45 @@ const editarLicencia = () => {
     icon: "success",
   });
 };
+
+function validarFechaFin(fechaInicio, fechaFin) {
+  if (fechaFin >= fechaInicio) {
+    inputFechaFin.classList.add("is-valid");
+    inputFechaFin.classList.remove("is-invalid");
+    return true;
+  } else {
+    inputFechaFin.classList.add("is-invalid");
+    inputFechaFin.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validarFechaInicio(fechaInicio) {
+    const fechaActual = new Date()
+    console.log(fechaActual)
+  if (fechaInicio <= fechaActual) {
+    inputFechaInicio.classList.add("is-valid");
+    inputFechaInicio.classList.remove("is-invalid");
+    return true;
+  } else {
+    inputFechaInicio.classList.add("is-invalid");
+    inputFechaInicio.classList.remove("is-valid");
+    return false;
+  }
+}
+
+
+function validaciones() {
+  let datosValidos = true;
+  if (!validarFechaFin(new Date(inputFechaInicio.value), new Date(inputFechaFin.value))) {
+    datosValidos = false;
+  }
+
+    if (!validarFechaInicio(new Date(inputFechaInicio.value))) {
+    datosValidos = false;
+    }
+  return datosValidos;
+}
 
 const btnAgregar = document.getElementById("btnAgregar");
 const formularioLicencias = document.querySelector("form");
