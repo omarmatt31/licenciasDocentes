@@ -26,8 +26,8 @@ card.innerHTML = `<div class="row g-0">
 
 const abrirModal = ()=>{
     console.log("abrir modal")
-    const modalDocente = new bootstrap.Modal(document.getElementById('modalLicencia'))
-    modalDocente.show()
+    const modalLicencia = new bootstrap.Modal(document.getElementById('modalLicencia'))
+    modalLicencia.show()
     creandoLicencia = true
 }
 
@@ -37,13 +37,15 @@ const crearLicencia = ()=>{
     //const docenteNuevo = new Docente(inputApellido.value, inputNombre.value, inputCuil.value, inputTelefono.value)
     listadoLicencias.push(licenciaNueva)
     guardarLocalStorage()
-    dibujarFila(licenciaNueva, listaLicencias.length)
+    dibujarFila(licenciaNueva, listadoLicencias.length)
     limpiarFormulario()
     Swal.fire({
         title: "Licencia creada",
         text: `La licencia fue asignada con exito`,
         icon: "success"
     });
+    const modalLicencia = bootstrap.Modal.getInstance(document.getElementById('modalLicencia'))
+    modalLicencia.hide()
 }
 
 const guardarLocalStorage = () =>{
@@ -65,7 +67,7 @@ const cargarDatosTabla = () => {
 }
 
 const dibujarFila = (licencia, indice)=> {
-    tablaLicencia.innerHTML +=`<tr>
+    tablaLicencia.innerHTML +=`<tr class="table-light">
                                 <th scope="row">${indice}</th>
                                 <td>${licencia.articulo}</td>
                                 <td>${licencia.fechaInicio}</td>
@@ -73,10 +75,15 @@ const dibujarFila = (licencia, indice)=> {
                                 <td>${licencia.dias}</td>
                                 <td>${licencia.observaciones}</td>
                                 <td>
-                                  <button class="btn btn-warning" onclick="prepararDocente('${licencia.id}')">Editar</button>
+                                  <button class="btn btn-warning" onclick="prepararLicencia('${licencia.id}')">Editar</button>
                                   <button class="btn btn-danger" onclick="eliminarLicencia('${licencia.id}')">Eliminar</button>
                                 </td>
                               </tr>`
+}
+
+const actualizarDatosTabla = () => {
+    tablaLicencia.innerHTML = ''
+    cargarDatosTabla()
 }
 
 window.eliminarLicencia = (id)=>{
@@ -86,7 +93,44 @@ window.eliminarLicencia = (id)=>{
     tablaLicencia.children[posicionLicenciaBuscada].remove()
 }
 
+window.prepararLicencia = (id)=> {
+   const licenciaBuscada = listadoLicencias.find((licencia)=> licencia.id === id)
+   inputArticulo.value = licenciaBuscada.articulo
+   inputFechaInicio.value = licenciaBuscada.fechaInicio
+   inputFechaFin.value = licenciaBuscada.fechaFin
+   inputDias.value = licenciaBuscada.dias
+   inputObservaciones.value = licenciaBuscada.observaciones
+   abrirModal()
+   idLicenciaEditar = id
+   creandoLicencia = false
+}
 
+window.verDocente = (id) => {
+    window.location.href='./pages/detalleLicencias.html?cod='+id
+}
+
+const editarLicencia = () =>{
+    const posicionLicencia = listadoLicencias.findIndex((licencia)=> licencia.id === idLicenciaEditar)
+    listadoLicencias[posicionLicencia].articulo = inputArticulo.value
+    listadoLicencias[posicionLicencia].fechaInicio = inputFechaInicio.value
+    listadoLicencias[posicionLicencia].fechaFin = inputFechaFin.value
+    listadoLicencias[posicionLicencia].dias = inputDias.value
+    listadoLicencias[posicionLicencia].observaciones = inputObservaciones.value
+    guardarLocalStorage()
+    limpiarFormulario()
+
+    const modalLicencia = bootstrap.Modal.getInstance(document.getElementById('modalLicencia'))
+    modalLicencia.hide()
+
+    actualizarDatosTabla()
+
+    Swal.fire({
+        title: "Licencia modificada",
+        text: `La licencia fue modificada con exito`,
+        icon: "success"
+    });
+    
+}
 
 const btnAgregar = document.getElementById('btnAgregar')
 const formularioLicencias = document.querySelector('form')
@@ -97,6 +141,7 @@ const inputDias = document.querySelector('#dias')
 const inputObservaciones = document.querySelector('#observaciones')
 const tablaLicencia = document.querySelector('tbody')
 let creandoLicencia = true
+let idLicenciaEditar = null
 
 const listadoLicencias = JSON.parse(localStorage.getItem('listadoLicenciasKey')).filter(licencia => licencia.idDocente === id) || []
 
@@ -106,7 +151,7 @@ formularioLicencias.addEventListener('submit', (e)=>{
     if(creandoLicencia){
         crearLicencia()
     }else{
-        //editarDocente()
+        editarLicencia()
     }
 
 })

@@ -39,7 +39,7 @@ const cargarDatosTabla = () => {
 }
 
 const dibujarFila = (docente, indice)=> {
-    tablaDocente.innerHTML +=`<tr>
+    tablaDocente.innerHTML +=`<tr class="table-light">
                         <th scope="row">${indice}</th>
                         <td>${docente.apellido}</td>
                         <td>${docente.nombre}</td>
@@ -88,6 +88,9 @@ const editarDocente = () =>{
     listadoDocente[posicionDocente].telefono = inputTelefono.value
 
     guardarLocalStorage()
+    limpiarFormulario()
+    abrirModal
+
 }
 
 const btnAgregar = document.getElementById('btnAgregar')
