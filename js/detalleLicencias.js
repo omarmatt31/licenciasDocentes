@@ -73,10 +73,10 @@ const guardarLocalStorage = () => {
 
 const limpiarFormulario = () => {
   formularioLicencias.reset();
-  //const inputs = formularioLicencias.querySelector('.form-control')
-  //inputs.forEach(input => {
-  // input.classList.remove('is-valid', 'is-invalid');
-  // });
+  const inputs = formularioLicencias.querySelectorAll('.form-control')
+  inputs.forEach(input => {
+   input.classList.remove('is-valid', 'is-invalid');
+    });
 };
 
 const cargarDatosTabla = () => {
