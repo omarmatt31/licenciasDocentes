@@ -106,7 +106,7 @@ let idDocenteEditar = null
 btnAgregar.addEventListener('click', abrirModal)
 formularioDocentes.addEventListener('submit', (e)=>{
     e.preventDefault()
-    if(crearDocente){
+    if(creandoDocente){
         crearDocente()
     }else{
         editarDocente()

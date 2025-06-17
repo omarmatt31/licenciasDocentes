@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css" />
     <title>Licencia Docentes</title>
   </head>
@@ -80,23 +81,124 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>22</td>
-                            <td>12-06-25</td>
-                            <td>14-06-25</td>
-                            <td>3</td>
-                            <td>Presentado fuera de termino</td>
-                            <td>
-                            <button class="btn btn-warning" onclick="prepararDocente('${docente.id}')">Editar</button>
-                            <button class="btn btn-danger" onclick="eliminarDocente('${docente.id}')">Eliminar</button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
         </section>
       </main>
     </main>
+            <!-- Modal licencia-->
+    <div
+      class="modal fade"
+      id="modalLicencia"
+      tabindex="-1"
+      aria-labelledby="modalLicenciaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLicenciaLabel">
+              Licencias
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="inputDias">Articulo</label>
+                      <select id="articulo" class="form-control">
+                        <option selected>22</option>
+                        <option>24</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                        <option>55</option>
+                        <option>74</option>
+                        <option>77</option>
+                        <option>91</option>
+                        <option>98</option>
+                        <option>Art 2 - Franquicia 1185</option>
+                      </select>
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaInicio"
+                  aria-describedby="Ingresar la fecha de inicio"
+                  minlength="2"
+                  maxlength="50"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaFin" class="form-label">Fecha Fin</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaFin"
+                  aria-describedby="Ingresar la fecha de finalización"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 20-23345678-1"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputDias">Cantidad de dias</label>
+                <select id="dias" class="form-control">
+                  <option selected>1 dia</option>
+                  <option>2 dias</option>
+                  <option>3 dias</option>
+                  <option>4 dias</option>
+                  <option>5 dias</option>
+                  <option>6 dias</option>
+                  <option>7 dias</option>
+                  <option>8 dias</option>
+                  <option>9 dias</option>
+                  <option>10 dias</option>
+                  <option>11 dias</option>
+                  <option>12 dias</option>
+                  <option>13 dias</option>
+                  <option>14 dias</option>
+                  <option>15 dias</option>
+                  <option>16 dias</option>
+                  <option>17 dias</option>
+                  <option>18 dias</option>
+                  <option>19 dias</option>
+                  <option>20 dias</option>
+                  <option>21 dias</option>
+                  <option>22 dias</option>
+                  <option>23 dias</option>
+                  <option>24 dias</option>
+                  <option>25 dias</option>
+                  <option>26 dias</option>
+                  <option>27 dias</option>
+                  <option>28 dias</option>
+                  <option>29 dias</option>
+                  <option>30 dias</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Observaciones</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="observaciones"
+                  placeholder="Ej: +54381222333"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-dark text-light text-center py-3">
       <p>&copy; Todos los derechos reservados</p>
     </footer>
@@ -105,6 +207,7 @@
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/detalleDocente.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js"></script>
+    <script src="../js/detalleLicencias.js" type="module"></script>
   </body>
 </html>
