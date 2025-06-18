@@ -2,11 +2,8 @@ import Licencia from "./classLicencia.js";
 
 const parametroURL = new URLSearchParams(window.location.search);
 const id = parametroURL.get("cod");
-console.log(id);
 const listaDocentes = JSON.parse(localStorage.getItem("listadoDocenteKey"));
 const docenteBuscado = listaDocentes.find((docente) => docente.id === id);
-
-console.log(docenteBuscado);
 
 const card = document.querySelector(".card");
 card.innerHTML = `<div class="row g-0">
@@ -25,7 +22,6 @@ card.innerHTML = `<div class="row g-0">
             </div>`;
 
 const abrirModal = () => {
-  console.log("abrir modal");
   const modalLicencia = new bootstrap.Modal(
     document.getElementById("modalLicencia")
   );
@@ -195,7 +191,6 @@ function validarFechaFin(fechaInicio, fechaFin) {
 
 function validarFechaInicio(fechaInicio) {
   const fechaActual = new Date();
-  console.log(fechaActual);
   if (fechaInicio <= fechaActual) {
     inputFechaInicio.classList.add("is-valid");
     inputFechaInicio.classList.remove("is-invalid");
