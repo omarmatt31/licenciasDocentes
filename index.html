@@ -10,26 +10,17 @@
 </head>
 <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-          <a class="navbar-brand" href="./index.html">Licencias de Docentes</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid mx-5">
+          <a href="./index.html"><img src="./img/Escudo2.png" alt="escudo colegio" class="mx-2"></a>
+          <a class="navbar-brand" href="#">Colegio Secundario N° 5013 "Fray Mamerto Esquiú"</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" href="./pages/error404.html"
-                  >Nosotros</a
-                >
+                <a class="nav-link" href="#">Nosotros</a>
               </li>
             </ul>
           </div>
@@ -42,7 +33,7 @@
             <button class="btn btn-primary" id="btnAgregar">Agregar</button>
         </div>
         <section class="table-responsive">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -55,23 +46,104 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Ferreyra</td>
-                        <td>Raul Fernando</td>
-                        <td>20-23345678-1</td>
-                        <td>20-02-1975</td>
-                        <td>3876-3457899</td>
-                        <td>
-                        <button class="btn btn-warning">Editar</button>
-                        <button class="btn btn-danger" onclick="eliminarContacto()">Dar de Baja</button>
-                        <button class="btn btn-info">Ver Licencias</button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
         </section>
     </main>
+        <!-- Modal contacto-->
+    <div
+      class="modal fade"
+      id="modalDocente"
+      tabindex="-1"
+      aria-labelledby="modalDocenteLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalDocenteLabel">
+              Administrar Docentes
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="apellido"
+                    minlength="2"
+                    maxlength="50"
+                    placeholder="Ej: Perez"
+                    />
+                <div class="valid-feedback">El apellido es correcto</div>
+                <div class="invalid-feedback">El apellido es obligatorio y debe contener 2 y 50 caracteres</div>
+              </div>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  aria-describedby="Ingresar nombre"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: Juan"
+                />
+                <div class="valid-feedback">El nombre es correcto</div>
+                <div class="invalid-feedback">El nombre es obligatorio y debe contener 2 y 50 caracteres</div>
+              </div>
+              <div class="mb-3">
+                <label for="cuil" class="form-label">CUIL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cuil"
+                  aria-describedby="Ingresar numero de CUIL"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 20-23345678-1"
+                />
+                <div class="valid-feedback">El CUIL es correcto</div>
+                <div class="invalid-feedback">El CUIL debe tener un formato valido</div>
+              </div>
+              <div class="mb-3">
+                <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaNac"
+                  aria-describedby="Ingresar la Fecha de Nacimiento"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 01-01-1990"
+                />
+                <div class="invalid-feedback">El fecha debe ser menor</div>
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telefono"
+                  placeholder="Ej: +54381222333"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+    </div>
     <footer class="bg-dark text-light text-center py-3">
       <p>&copy; Todos los derechos reservados</p>
     </footer>

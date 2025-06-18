@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Licencia Docentes</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid mx-5">
+          <a href="../index.html"><img src="../img/Escudo2.png" alt="escudo colegio" class="mx-2"></a>
+          <a class="navbar-brand" href="#">Colegio Secundario N° 5013 "Fray Mamerto Esquiú"</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Nosotros</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <main class="container my-4">
+        <h3>Datos Personales</h1>
+        <section id="contact">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://images.pexels.com/photos/9482193/pexels-photo-9482193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  class="img-fluid rounded-start"
+                  alt="darth vader"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Contacto: Darth Vader
+                  </h5>
+                  <ul>
+                    <li><b>Email:</b> lord.vader@imperio.com</li>
+                    <li><b>Teléfono:</b> +445567722</li>
+                    <li><b>Dirección:</b> Estrella de la Muerte I (oficial), Órbita de Yavin IV (anteriormente)</li>
+                    <li><b>Notas:</b> "No subestimes el poder del Lado Oscuro". Preferencias de contacto: Solo holograma o llamada encriptada. Evitar mensajes de texto (no los lee).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-4">
+            <div class="d-flex justify-content-between">
+                <h3>Detalle de Licencias</h3>
+                <button class="btn btn-primary" id="btnAgregar">Agregar</button>
+            </div>
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">N° Articulo</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Fecha Fin</th>
+                        <th scope="col">Cant. Dias</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+      </main>
+    </main>
+            <!-- Modal licencia-->
+    <div
+      class="modal fade"
+      id="modalLicencia"
+      tabindex="-1"
+      aria-labelledby="modalLicenciaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLicenciaLabel">
+              Licencias
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="inputDias">Articulo</label>
+                      <select id="articulo" class="form-control">
+                        <option selected>22</option>
+                        <option>24</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                        <option>55</option>
+                        <option>74</option>
+                        <option>77</option>
+                        <option>91</option>
+                        <option>98</option>
+                        <option>Art 2 - Franquicia 1185</option>
+                      </select>
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaInicio"
+                  aria-describedby="Ingresar la fecha de inicio"
+                  minlength="2"
+                  maxlength="50"
+                />
+                <div class="valid-feedback">La fecha es correcta</div>
+                <div class="invalid-feedback">La fecha debe ser menor a la fecha actual</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaFin" class="form-label">Fecha Fin</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaFin"
+                  aria-describedby="Ingresar la fecha de finalización"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: 20-23345678-1"
+                />
+                <div class="valid-feedback">La fecha es correcta</div>
+                <div class="invalid-feedback">La fecha debe ser mayor o igual a la fecha de inicio</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputDias">Cantidad de dias</label>
+                <select id="dias" class="form-control">
+                  <option selected>1 dia</option>
+                  <option>2 dias</option>
+                  <option>3 dias</option>
+                  <option>4 dias</option>
+                  <option>5 dias</option>
+                  <option>6 dias</option>
+                  <option>7 dias</option>
+                  <option>8 dias</option>
+                  <option>9 dias</option>
+                  <option>10 dias</option>
+                  <option>11 dias</option>
+                  <option>12 dias</option>
+                  <option>13 dias</option>
+                  <option>14 dias</option>
+                  <option>15 dias</option>
+                  <option>16 dias</option>
+                  <option>17 dias</option>
+                  <option>18 dias</option>
+                  <option>19 dias</option>
+                  <option>20 dias</option>
+                  <option>21 dias</option>
+                  <option>22 dias</option>
+                  <option>23 dias</option>
+                  <option>24 dias</option>
+                  <option>25 dias</option>
+                  <option>26 dias</option>
+                  <option>27 dias</option>
+                  <option>28 dias</option>
+                  <option>29 dias</option>
+                  <option>30 dias</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Observaciones</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="observaciones"
+                  placeholder="Ej: +54381222333"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-dark text-light text-center py-3">
+      <p>&copy; Todos los derechos reservados</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js"></script>
+    <script src="../js/detalleLicencias.js" type="module"></script>
+  </body>
+</html>
