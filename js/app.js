@@ -91,7 +91,6 @@ window.eliminarDocente = (id) => {
 };
 
 window.prepararDocente = (id) => {
-  // console.log("Aqui debe preparar un docente", id)
   const docenteBuscado = listadoDocente.find((docente) => docente.id === id);
   inputApellido.value = docenteBuscado.apellido;
   inputNombre.value = docenteBuscado.nombre;
@@ -153,12 +152,10 @@ function validarFechaNac(fecha){
     if((anioActual - fecha.getFullYear())>=22){
         inputFechaNac.classList.add("is-valid");
         inputFechaNac.classList.remove("is-invalid");
-        console.log("valido")
         return true
     }else {
         inputFechaNac.classList.add("is-invalid");
         inputFechaNac.classList.remove("is-valid");
-        console.log("invalido")
         return false
     }
 }
